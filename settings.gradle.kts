@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CanteenOrder"
+rootProject.name = "CampusBite"
 include(":app")
