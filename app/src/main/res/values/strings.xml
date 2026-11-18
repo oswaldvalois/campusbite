@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KantinKu</string>
+
+    <string name="header_title">Pesan Makanan</string>
+    <string name="header_subtitle">Isi form pesanan, lalu tekan Pesan Sekarang.</string>
+
+    <string name="label_name">Nama pemesan</string>
+    <string name="label_password">Password akun</string>
+    <string name="label_menu">Pilih menu</string>
+    <string name="label_topping">Topping (boleh lebih dari satu)</string>
+    <string name="label_portion">Jumlah porsi</string>
+    <string name="label_total">Total bayar</string>
+
+    <string name="topping_cheese">Keju (+Rp3.000)</string>
+    <string name="topping_egg">Telur (+Rp2.000)</string>
+    <string name="topping_sambal">Sambal (+Rp1.000)</string>
+
+    <string name="button_order">Pesan Sekarang</string>
+    <string name="button_view_orders">Lihat Pesanan</string>
+    <string name="button_delete">Hapus Pesanan</string>
+
+    <string name="portion_value">%1$d porsi</string>
+    <string name="order_saved">Pesanan berhasil disimpan</string>
+    <string name="action_view">LIHAT</string>
+
+    <string name="error_name_required">Nama pemesan wajib diisi</string>
+    <string name="error_password_required">Password minimal 4 karakter</string>
+
+    <string name="title_order_list">Daftar Pesanan</string>
+    <string name="empty_orders">Belum ada pesanan.\nKembali dan isi form untuk memesan.</string>
+
+    <string name="title_order_detail">Detail Pesanan</string>
+    <string name="detail_customer">Nama pemesan</string>
+    <string name="detail_menu">Menu</string>
+    <string name="detail_toppings">Topping</string>
+    <string name="detail_portion">Jumlah porsi</string>
+    <string name="detail_total">Total bayar</string>
+    <string name="detail_time">Waktu pesan</string>
+    <string name="no_topping">Tanpa topping</string>
+    <string name="order_deleted">Pesanan dihapus</string>
+    <string name="navigate_up">Kembali</string>
+</resources>
