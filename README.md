@@ -7,12 +7,18 @@ Alur: isi form pesanan → data disimpan ke SQLite → daftar pesanan → detail
 
 ## Fitur
 
-- Form pesanan dengan validasi nama dan password.
-- Perhitungan total otomatis dari harga menu, topping, dan jumlah porsi.
+- Hero header gradien dengan ringkasan jam buka dan jumlah menu.
+- Form pesanan berseksi bernomor: data pemesan, pilih menu, tambahan, jumlah porsi, ringkasan.
+- Pemilih menu horizontal: kartu menu yang menyala saat dipilih, lengkap dengan harga.
+- Topping berupa baris yang berubah warna dan garis tepi saat dicentang.
+- Jumlah porsi lewat stepper tombol + / − dan slider SeekBar yang tersinkron.
+- Total berjalan (count-up animation) plus rincian harga menu, topping, dan porsi.
+- Validasi nama dan password dengan pesan error dan auto-scroll ke kolom bermasalah.
 - Penyimpanan pesanan ke database SQLite lokal.
-- Daftar pesanan (terbaru di atas) dan halaman detail.
-- Hapus pesanan dari halaman detail.
-- Tema Material 3 dengan dukungan mode gelap.
+- Daftar pesanan dengan avatar inisial, jumlah pesanan, dan kartu yang bisa ditekan.
+- Halaman detail dengan hero total, rincian pesanan, dan hapus pesanan.
+- Empty state berilustrasi dengan tombol "Buat pesanan".
+- Transisi antar layar (slide + fade) dan tema Material 3 dengan mode gelap.
 
 ## Pemenuhan Requirement
 
@@ -26,7 +32,7 @@ Alur: isi form pesanan → data disimpan ke SQLite → daftar pesanan → detail
 | Button | `MaterialButton` "Pesan Sekarang", "Lihat Pesanan", dan "Hapus Pesanan". |
 | SeekBar | `SeekBar` jumlah porsi 1–10 (`seekPortion`), total ikut berubah. |
 | Database | SQLite via `OrderDbHelper` (`SQLiteOpenHelper`): tabel `orders`, operasi insert, query, dan delete. |
-| Workflow & desain | Alur form → simpan → daftar → detail → hapus, UI Material 3, kartu, warna konsisten, mode gelap. |
+| Workflow & desain | Alur form → simpan → daftar → detail → hapus; UI material 3 dengan hero, kartu berseksi, animasi total, transisi layar, dan mode gelap. |
 
 ## Struktur Kode
 
@@ -57,9 +63,13 @@ Atau buka folder proyek di Android Studio, lalu Run.
 
 ## Screenshot
 
-| Form Pesanan | Daftar Pesanan | Detail Pesanan |
+| Form Pesanan | Form Terisi | Daftar Pesanan |
 |---|---|---|
-| ![Form](docs/screenshots/01-form.png) | ![Daftar](docs/screenshots/02-daftar-pesanan.png) | ![Detail](docs/screenshots/03-detail-pesanan.png) |
+| ![Form](docs/screenshots/01-form.png) | ![Form terisi](docs/screenshots/02-form-terisi.png) | ![Daftar](docs/screenshots/03-daftar-pesanan.png) |
+
+| Detail Pesanan | Daftar Kosong |
+|---|---|
+| ![Detail](docs/screenshots/04-detail-pesanan.png) | ![Kosong](docs/screenshots/05-kosong.png) |
 
 ## Spesifikasi
 

@@ -10,4 +10,11 @@
 
     <color name="price_accent">#FFB870</color>
     <color name="muted_text">#B6BABF</color>
+
+    <color name="hero_start">#06210F</color>
+    <color name="hero_end">#17512F</color>
+    <color name="hero_on">#D9F5E1</color>
+    <color name="topping_selected">#12331D</color>
+    <color name="section_badge">#1B3A26</color>
+    <color name="summary_surface">#12291B</color>
 </resources>

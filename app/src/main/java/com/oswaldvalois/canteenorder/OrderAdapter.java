@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/** RecyclerView adapter that renders saved orders. */
+/** RecyclerView adapter that renders saved orders as avatar cards. */
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
 
     public interface OnOrderClickListener {
@@ -47,12 +47,27 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         Order order = orders.get(position);
+        holder.initials.setText(initialsOf(order.getCustomer()));
         holder.customer.setText(order.getCustomer());
         holder.total.setText(Money.rupiah(order.getTotal()));
         holder.menu.setText(order.getMenu() + " × " + order.getQuantity());
         holder.toppings.setText(order.getToppings());
         holder.time.setText(dateFormat.format(new Date(order.getCreatedAt())));
         holder.itemView.setOnClickListener(v -> listener.onOrderClick(order));
+    }
+
+    private static String initialsOf(String name) {
+        String trimmed = name.trim();
+        if (trimmed.isEmpty()) {
+            return "?";
+        }
+        String[] parts = trimmed.split("\\s+");
+        StringBuilder initials = new StringBuilder();
+        initials.append(Character.toUpperCase(parts[0].charAt(0)));
+        if (parts.length > 1 && !parts[1].isEmpty()) {
+            initials.append(Character.toUpperCase(parts[1].charAt(0)));
+        }
+        return initials.toString();
     }
 
     @Override
@@ -62,6 +77,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     static class OrderViewHolder extends RecyclerView.ViewHolder {
 
+        final TextView initials;
         final TextView customer;
         final TextView total;
         final TextView menu;
@@ -70,6 +86,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
         OrderViewHolder(@NonNull View itemView) {
             super(itemView);
+            initials = itemView.findViewById(R.id.textInitials);
             customer = itemView.findViewById(R.id.textCustomer);
             total = itemView.findViewById(R.id.textTotal);
             menu = itemView.findViewById(R.id.textMenu);

@@ -1,6 +1,5 @@
 package com.oswaldvalois.canteenorder;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -18,7 +17,8 @@ public class OrderListActivity extends BaseActivity {
     private OrderDbHelper db;
     private OrderAdapter adapter;
     private RecyclerView recyclerOrders;
-    private TextView textEmpty;
+    private View emptyState;
+    private TextView textCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +31,14 @@ public class OrderListActivity extends BaseActivity {
 
         db = new OrderDbHelper(this);
         recyclerOrders = findViewById(R.id.recyclerOrders);
-        textEmpty = findViewById(R.id.textEmpty);
+        emptyState = findViewById(R.id.emptyState);
+        textCount = findViewById(R.id.textCount);
 
         adapter = new OrderAdapter(this::openDetail);
         recyclerOrders.setLayoutManager(new LinearLayoutManager(this));
         recyclerOrders.setAdapter(adapter);
+
+        findViewById(R.id.buttonCreateOrder).setOnClickListener(v -> finish());
     }
 
     @Override
@@ -48,14 +51,21 @@ public class OrderListActivity extends BaseActivity {
         List<Order> orders = db.getAll();
         adapter.submit(orders);
         boolean isEmpty = orders.isEmpty();
-        textEmpty.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+        emptyState.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
         recyclerOrders.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+        textCount.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+        if (!isEmpty) {
+            textCount.setText(getString(R.string.list_count, orders.size()));
+        }
+        if (isEmpty) {
+            emptyState.setAlpha(0f);
+            emptyState.animate().alpha(1f).setDuration(220).start();
+        }
     }
 
     private void openDetail(Order order) {
-        Intent intent = new Intent(this, OrderDetailActivity.class);
-        intent.putExtra(OrderDetailActivity.EXTRA_ORDER_ID, order.getId());
-        startActivity(intent);
+        OrderDetailActivity.start(this, order.getId());
+        overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out);
     }
 
     @Override
