@@ -55,7 +55,7 @@ public class OrderListActivity extends BaseActivity {
         recyclerOrders.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
         textCount.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
         if (!isEmpty) {
-            textCount.setText(getString(R.string.list_count, orders.size()));
+            textCount.setText(getResources().getQuantityString(R.plurals.order_count, orders.size(), orders.size()));
         }
         if (isEmpty) {
             emptyState.setAlpha(0f);

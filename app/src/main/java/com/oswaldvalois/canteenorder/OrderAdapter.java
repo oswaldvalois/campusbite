@@ -24,7 +24,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     private final List<Order> orders = new ArrayList<>();
     private final OnOrderClickListener listener;
     private final SimpleDateFormat dateFormat =
-            new SimpleDateFormat("dd MMM yyyy, HH:mm", new Locale("id", "ID"));
+            new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.ENGLISH);
 
     public OrderAdapter(OnOrderClickListener listener) {
         this.listener = listener;

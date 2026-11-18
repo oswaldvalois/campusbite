@@ -1,79 +1,79 @@
-# KantinKu — Aplikasi Pemesanan Makanan Kantin
+# CampusBite — Campus Canteen Ordering App
 
-Aplikasi Android untuk memesan makanan kantin. Dibuat untuk Tugas Proyek
-mata kuliah **Mobile Application Development** (Semester 20261).
+An Android app for ordering food from the campus canteen. Built for the
+**Mobile Application Development** course project (Semester 20261).
 
-Alur: isi form pesanan → data disimpan ke SQLite → daftar pesanan → detail pesanan.
+Flow: fill in the order form → the order is stored in SQLite → order list → order details.
 
-## Fitur
+## Features
 
-- Hero header gradien dengan ringkasan jam buka dan jumlah menu.
-- Form pesanan berseksi bernomor: data pemesan, pilih menu, tambahan, jumlah porsi, ringkasan.
-- Pemilih menu horizontal: kartu menu yang menyala saat dipilih, lengkap dengan harga.
-- Topping berupa baris yang berubah warna dan garis tepi saat dicentang.
-- Jumlah porsi lewat stepper tombol + / − dan slider SeekBar yang tersinkron.
-- Total berjalan (count-up animation) plus rincian harga menu, topping, dan porsi.
-- Validasi nama dan password dengan pesan error dan auto-scroll ke kolom bermasalah.
-- Penyimpanan pesanan ke database SQLite lokal.
-- Daftar pesanan dengan avatar inisial, jumlah pesanan, dan kartu yang bisa ditekan.
-- Halaman detail dengan hero total, rincian pesanan, dan hapus pesanan.
-- Empty state berilustrasi dengan tombol "Buat pesanan".
-- Transisi antar layar (slide + fade) dan tema Material 3 dengan mode gelap.
+- Gradient hero header with opening hours and available menu count.
+- Numbered section cards: customer details, choose a menu, add-ons, portion, summary.
+- Horizontal menu picker: the selected card lights up and shows its price in a pill.
+- Add-ons as rows that change colour and border when ticked.
+- Portion count through a + / − stepper and a synced SeekBar slider.
+- Running total (count-up animation) plus a breakdown of menu price, add-ons and portions.
+- Name and password validation with inline errors and auto-scroll to the failing field.
+- Orders persisted in a local SQLite database.
+- Order list with initial avatars, saved order count, and tappable cards.
+- Detail screen with a hero total, order breakdown, and delete action.
+- Illustrated empty state with a "Create Order" button.
+- Screen transitions (slide + fade) and a Material 3 theme with dark mode support.
 
-## Pemenuhan Requirement
+## Requirement Coverage
 
-| Requirement | Implementasi |
+| Requirement | Implementation |
 |---|---|
-| Intent dan Activity | 3 Activity: `MainActivity` → `OrderListActivity` → `OrderDetailActivity`. Perpindahan memakai `Intent` eksplisit, data pesanan dikirim lewat `Intent` extra (`order_id`). |
-| Text Input | `TextInputLayout` + `TextInputEditText` untuk nama pemesan (`inputName`). |
-| Password input | `TextInputEditText` dengan `inputType="textPassword"` dan tombol tampil/sembunyikan password (`inputPassword`). |
-| Selection (Spinner) | `Spinner` daftar menu beserta harga (`spinnerMenu`). |
-| Checkbox / Radio Button | 3 `CheckBox` topping: keju, telur, sambal. |
-| Button | `MaterialButton` "Pesan Sekarang", "Lihat Pesanan", dan "Hapus Pesanan". |
-| SeekBar | `SeekBar` jumlah porsi 1–10 (`seekPortion`), total ikut berubah. |
-| Database | SQLite via `OrderDbHelper` (`SQLiteOpenHelper`): tabel `orders`, operasi insert, query, dan delete. |
-| Workflow & desain | Alur form → simpan → daftar → detail → hapus; UI material 3 dengan hero, kartu berseksi, animasi total, transisi layar, dan mode gelap. |
+| Intent and Activity | 3 activities: `MainActivity` → `OrderListActivity` → `OrderDetailActivity`. Navigation uses explicit `Intent`s; the order is passed through the `order_id` Intent extra. |
+| Text Input | `TextInputLayout` + `TextInputEditText` for the customer name (`inputName`). |
+| Password input | `TextInputEditText` with `inputType="textPassword"` and a show/hide toggle (`inputPassword`). |
+| Selection (Spinner) | `Spinner` listing the menu with prices (`spinnerMenu`). |
+| Checkbox / Radio Button | 3 `CheckBox` add-ons: cheese, egg, chili sauce. |
+| Button | `MaterialButton` for "Place Order", "View Orders" and "Delete Order". |
+| SeekBar | `SeekBar` for 1–10 portions (`seekPortion`); the total updates as it moves. |
+| Database | SQLite through `OrderDbHelper` (`SQLiteOpenHelper`): the `orders` table with insert, query and delete. |
+| Workflow & design | Form → save → list → detail → delete; Material 3 UI with a hero header, section cards, animated total, screen transitions and dark mode. |
 
-## Struktur Kode
+## Code Structure
 
 ```
 app/src/main/java/com/oswaldvalois/canteenorder/
-├── MainActivity.java        # Form pesanan + validasi + simpan ke SQLite
-├── OrderListActivity.java   # Daftar pesanan (RecyclerView)
-├── OrderDetailActivity.java # Detail pesanan + hapus
-├── OrderAdapter.java        # Adapter RecyclerView
-├── OrderDbHelper.java       # SQLiteOpenHelper (CRUD tabel orders)
-├── Order.java               # Model pesanan
-├── MenuItem.java            # Model menu (nama + harga)
-├── Money.java               # Format rupiah
-└── BaseActivity.java        # Penanganan system bar insets
+├── MainActivity.java        # Order form, validation, writes to SQLite
+├── OrderListActivity.java   # Order list (RecyclerView)
+├── OrderDetailActivity.java # Order details and delete action
+├── OrderAdapter.java        # RecyclerView adapter with initial avatars
+├── OrderDbHelper.java       # SQLiteOpenHelper (CRUD for the orders table)
+├── Order.java               # Order model
+├── MenuItem.java            # Menu model (name + price)
+├── Money.java               # Rupiah formatting
+└── BaseActivity.java        # System bar insets and screen transitions
 ```
 
-## Cara Build
+## Build
 
-Prasyarat: Android Studio (JDK 17+) dan Android SDK.
+Requirements: Android Studio (JDK 17+) and the Android SDK.
 
 ```bash
 ./gradlew assembleDebug
 ```
 
-APK hasil build: `app/build/outputs/apk/debug/app-debug.apk`.
+The APK lands in `app/build/outputs/apk/debug/app-debug.apk`.
 
-Atau buka folder proyek di Android Studio, lalu Run.
+Or open the project folder in Android Studio and press Run.
 
-## Screenshot
+## Screenshots
 
-| Form Pesanan | Form Terisi | Daftar Pesanan |
+| Order Form | Form Filled In | Orders |
 |---|---|---|
-| ![Form](docs/screenshots/01-form.png) | ![Form terisi](docs/screenshots/02-form-terisi.png) | ![Daftar](docs/screenshots/03-daftar-pesanan.png) |
+| ![Form](docs/screenshots/01-form.png) | ![Form filled](docs/screenshots/02-form-filled.png) | ![Orders](docs/screenshots/03-order-list.png) |
 
-| Detail Pesanan | Daftar Kosong |
+| Order Details | Empty State |
 |---|---|
-| ![Detail](docs/screenshots/04-detail-pesanan.png) | ![Kosong](docs/screenshots/05-kosong.png) |
+| ![Details](docs/screenshots/04-order-details.png) | ![Empty](docs/screenshots/05-empty.png) |
 
-## Spesifikasi
+## Specifications
 
-- Bahasa: Java
+- Language: Java
 - minSdk 24, targetSdk 37, compileSdk 37
 - Android Gradle Plugin 9.3.2, Gradle 9.5
-- Library: AndroidX AppCompat, Material Components, RecyclerView
+- Libraries: AndroidX AppCompat, Material Components, RecyclerView

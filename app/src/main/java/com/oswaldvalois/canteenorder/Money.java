@@ -9,6 +9,6 @@ public final class Money {
     }
 
     public static String rupiah(int amount) {
-        return "Rp" + String.format(Locale.US, "%,d", amount).replace(',', '.');
+        return "Rp" + String.format(Locale.US, "%,d", amount);
     }
 }

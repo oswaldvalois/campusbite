@@ -12,7 +12,7 @@ import java.util.List;
 /** SQLite persistence for canteen orders. */
 public class OrderDbHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "kantin.db";
+    private static final String DB_NAME = "canteen.db";
     private static final int DB_VERSION = 1;
 
     private static final String TABLE_ORDERS = "orders";

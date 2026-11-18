@@ -1,61 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">KantinKu</string>
+    <string name="app_name">CampusBite</string>
 
-    <string name="hero_title">Mau makan apa hari ini?</string>
-    <string name="hero_subtitle">Pesan dari kantin kampus, ambil saat sudah siap.</string>
-    <string name="hero_chip_menu">5 menu tersedia</string>
-    <string name="hero_chip_hours">Buka 08.00–16.00</string>
+    <string name="hero_title">What are you eating today?</string>
+    <string name="hero_subtitle">Order from the campus canteen and pick it up when it is ready.</string>
+    <string name="hero_chip_menu">5 menus available</string>
+    <string name="hero_chip_hours">Open 08.00–16.00</string>
 
-    <string name="section_customer">Data pemesan</string>
-    <string name="section_menu">Pilih menu</string>
-    <string name="section_topping">Tambahan</string>
-    <string name="section_portion">Jumlah porsi</string>
-    <string name="section_summary">Ringkasan pesanan</string>
+    <string name="section_customer">Customer details</string>
+    <string name="section_menu">Choose a menu</string>
+    <string name="section_topping">Add-ons</string>
+    <string name="section_portion">Portion</string>
+    <string name="section_summary">Order summary</string>
 
-    <string name="label_name">Nama pemesan</string>
-    <string name="label_password">Password akun</string>
-    <string name="label_topping_hint">Boleh pilih lebih dari satu</string>
-    <string name="label_portion_hint">Geser atau tekan tombol + / −</string>
+    <string name="label_name">Customer name</string>
+    <string name="label_password">Account password</string>
+    <string name="label_topping_hint">You can pick more than one</string>
+    <string name="label_portion_hint">Drag the slider or tap + / −</string>
 
-    <string name="topping_cheese">Keju  ·  +Rp3.000</string>
-    <string name="topping_egg">Telur  ·  +Rp2.000</string>
-    <string name="topping_sambal">Sambal  ·  +Rp1.000</string>
+    <string name="topping_cheese">Cheese  ·  +Rp3,000</string>
+    <string name="topping_egg">Egg  ·  +Rp2,000</string>
+    <string name="topping_sambal">Chili sauce  ·  +Rp1,000</string>
+    <string name="topping_cheese_short">Cheese</string>
+    <string name="topping_egg_short">Egg</string>
+    <string name="topping_sambal_short">Chili sauce</string>
 
-    <string name="summary_menu_price">Harga menu</string>
-    <string name="summary_topping_price">Topping</string>
-    <string name="summary_portion_count">Porsi</string>
-    <string name="summary_total">Total bayar</string>
+    <string name="summary_menu_price">Menu price</string>
+    <string name="summary_topping_price">Add-ons</string>
+    <string name="summary_portion_count">Portions</string>
+    <string name="summary_total">Total</string>
 
-    <string name="button_order">Pesan Sekarang</string>
-    <string name="button_view_orders">Lihat Pesanan</string>
-    <string name="button_delete">Hapus Pesanan</string>
-    <string name="button_create_order">Buat pesanan</string>
+    <string name="menu_fried_rice">Special Fried Rice</string>
+    <string name="menu_noodles">Chicken Noodle Soup</string>
+    <string name="menu_crispy_chicken">Crispy Chicken with Rice</string>
+    <string name="menu_satay">Chicken Satay</string>
+    <string name="menu_iced_tea">Iced Sweet Tea</string>
 
-    <string name="portion_value">%1$d porsi</string>
-    <string name="order_saved">Pesanan berhasil disimpan</string>
-    <string name="action_view">LIHAT</string>
+    <string name="button_order">Place Order</string>
+    <string name="button_view_orders">View Orders</string>
+    <string name="button_delete">Delete Order</string>
+    <string name="button_create_order">Create Order</string>
 
-    <string name="error_name_required">Nama pemesan wajib diisi</string>
-    <string name="error_password_required">Password minimal 4 karakter</string>
+    <plurals name="portion_count">
+        <item quantity="one">%1$d portion</item>
+        <item quantity="other">%1$d portions</item>
+    </plurals>
 
-    <string name="cd_add_portion">Tambah porsi</string>
-    <string name="cd_remove_portion">Kurangi porsi</string>
-    <string name="cd_open_order">Buka detail pesanan</string>
-    <string name="cd_hero_icon">Ikon makanan</string>
+    <string name="order_saved">Order saved</string>
+    <string name="action_view">VIEW</string>
 
-    <string name="title_order_list">Daftar Pesanan</string>
-    <string name="list_count">%1$d pesanan tersimpan</string>
-    <string name="empty_title">Belum ada pesanan</string>
-    <string name="empty_subtitle">Pesanan yang kamu buat akan muncul di sini.</string>
+    <string name="error_name_required">Customer name is required</string>
+    <string name="error_password_required">Password must be at least 4 characters</string>
 
-    <string name="title_order_detail">Detail Pesanan</string>
-    <string name="detail_customer">Nama pemesan</string>
+    <string name="cd_add_portion">Increase portion</string>
+    <string name="cd_remove_portion">Decrease portion</string>
+    <string name="cd_open_order">Open order details</string>
+    <string name="cd_hero_icon">Food icon</string>
+
+    <string name="title_order_list">Orders</string>
+    <plurals name="order_count">
+        <item quantity="one">%1$d order saved</item>
+        <item quantity="other">%1$d orders saved</item>
+    </plurals>
+    <string name="empty_title">No orders yet</string>
+    <string name="empty_subtitle">Orders you place will show up here.</string>
+
+    <string name="title_order_detail">Order Details</string>
+    <string name="detail_customer">Customer</string>
     <string name="detail_menu">Menu</string>
-    <string name="detail_toppings">Topping</string>
-    <string name="detail_portion">Jumlah porsi</string>
-    <string name="detail_total">Total bayar</string>
-    <string name="detail_time">Waktu pesan</string>
-    <string name="no_topping">Tanpa topping</string>
-    <string name="order_deleted">Pesanan dihapus</string>
+    <string name="detail_toppings">Add-ons</string>
+    <string name="detail_portion">Portions</string>
+    <string name="detail_total">Total</string>
+    <string name="detail_time">Ordered at</string>
+    <string name="no_topping">No add-ons</string>
+    <string name="order_deleted">Order deleted</string>
 </resources>

@@ -19,7 +19,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Interactive order form: numbered section cards, horizontal menu picker,
@@ -85,11 +84,11 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setupMenuPicker() {
-        menuItems.add(new MenuItem("Nasi Goreng Spesial", 15000));
-        menuItems.add(new MenuItem("Mie Ayam Bakso", 13000));
-        menuItems.add(new MenuItem("Ayam Geprek + Nasi", 14000));
-        menuItems.add(new MenuItem("Sate Ayam", 16000));
-        menuItems.add(new MenuItem("Es Teh Manis", 5000));
+        menuItems.add(new MenuItem(getString(R.string.menu_fried_rice), 15000));
+        menuItems.add(new MenuItem(getString(R.string.menu_noodles), 13000));
+        menuItems.add(new MenuItem(getString(R.string.menu_crispy_chicken), 14000));
+        menuItems.add(new MenuItem(getString(R.string.menu_satay), 16000));
+        menuItems.add(new MenuItem(getString(R.string.menu_iced_tea), 5000));
 
         LayoutInflater inflater = LayoutInflater.from(this);
         for (int i = 0; i < menuItems.size(); i++) {
@@ -182,8 +181,8 @@ public class MainActivity extends BaseActivity {
 
         summaryMenuPrice.setText(Money.rupiah(menuPrice()));
         summaryToppingPrice.setText(Money.rupiah(toppingPrice()));
-        summaryPortion.setText(String.format(Locale.US, "%d porsi", portion));
-        textPortion.setText(getString(R.string.portion_value, portion));
+        summaryPortion.setText(getResources().getQuantityString(R.plurals.portion_count, portion, portion));
+        textPortion.setText(getResources().getQuantityString(R.plurals.portion_count, portion, portion));
         animateTotal(total, instant);
     }
 
@@ -212,13 +211,13 @@ public class MainActivity extends BaseActivity {
     private String selectedToppings() {
         List<String> toppings = new ArrayList<>();
         if (checkCheese.isChecked()) {
-            toppings.add("Keju");
+            toppings.add(getString(R.string.topping_cheese_short));
         }
         if (checkEgg.isChecked()) {
-            toppings.add("Telur");
+            toppings.add(getString(R.string.topping_egg_short));
         }
         if (checkSambal.isChecked()) {
-            toppings.add("Sambal");
+            toppings.add(getString(R.string.topping_sambal_short));
         }
         return toppings.isEmpty()
                 ? getString(R.string.no_topping)

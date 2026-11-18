@@ -17,7 +17,7 @@ public class OrderDetailActivity extends BaseActivity {
     public static final String EXTRA_ORDER_ID = "order_id";
 
     private final SimpleDateFormat dateFormat =
-            new SimpleDateFormat("dd MMM yyyy, HH:mm", new Locale("id", "ID"));
+            new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.ENGLISH);
 
     private OrderDbHelper db;
     private Order order;
@@ -53,7 +53,7 @@ public class OrderDetailActivity extends BaseActivity {
         ((TextView) findViewById(R.id.detailMenu)).setText(order.getMenu());
         ((TextView) findViewById(R.id.detailToppings)).setText(order.getToppings());
         ((TextView) findViewById(R.id.detailPortion))
-                .setText(getString(R.string.portion_value, order.getQuantity()));
+                .setText(getResources().getQuantityString(R.plurals.portion_count, order.getQuantity(), order.getQuantity()));
         ((TextView) findViewById(R.id.detailTotal)).setText(Money.rupiah(order.getTotal()));
         ((TextView) findViewById(R.id.detailTime))
                 .setText(dateFormat.format(new Date(order.getCreatedAt())));
