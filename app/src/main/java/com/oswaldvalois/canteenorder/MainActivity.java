@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +45,7 @@ public class MainActivity extends BaseActivity {
     private CheckBox checkEgg;
     private CheckBox checkSambal;
     private SeekBar seekPortion;
+    private Spinner spinnerMenu;
     private TextView textPortion;
     private TextView textTotal;
     private TextView summaryMenuPrice;
@@ -70,6 +74,7 @@ public class MainActivity extends BaseActivity {
         checkEgg = findViewById(R.id.checkEgg);
         checkSambal = findViewById(R.id.checkSambal);
         seekPortion = findViewById(R.id.seekPortion);
+        spinnerMenu = findViewById(R.id.spinnerMenu);
         textPortion = findViewById(R.id.textPortion);
         textTotal = findViewById(R.id.textTotal);
         summaryMenuPrice = findViewById(R.id.summaryMenuPrice);
@@ -98,12 +103,36 @@ public class MainActivity extends BaseActivity {
             ((TextView) view.findViewById(R.id.menuPrice)).setText(Money.rupiah(menuItems.get(i).getPrice()));
             view.setOnClickListener(v -> {
                 selectedIndex = position;
+                spinnerMenu.setSelection(position);
                 refreshMenuSelection();
                 updateSummary(false);
             });
             menuRow.addView(view);
             menuViews.add(view);
         }
+
+        List<String> labels = new ArrayList<>();
+        for (MenuItem item : menuItems) {
+            labels.add(item.getName() + " · " + Money.rupiah(item.getPrice()));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, labels);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMenu.setAdapter(adapter);
+        spinnerMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != selectedIndex) {
+                    selectedIndex = position;
+                    refreshMenuSelection();
+                    updateSummary(false);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     private void refreshMenuSelection() {
@@ -290,6 +319,7 @@ public class MainActivity extends BaseActivity {
         checkSambal.setChecked(false);
         seekPortion.setProgress(0);
         selectedIndex = 0;
+        spinnerMenu.setSelection(0);
         refreshMenuSelection();
         inputName.clearFocus();
         inputPassword.clearFocus();
